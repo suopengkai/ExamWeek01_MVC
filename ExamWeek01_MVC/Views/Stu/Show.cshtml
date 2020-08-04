@@ -1,0 +1,58 @@
+﻿@model IEnumerable<ExamWeek01_MVC.SRC.StudentModel>
+
+@{
+    ViewBag.Title = "Show";
+}
+
+<h2>学生违纪信息管理</h2>
+
+<p>
+    @Html.ActionLink("添加学生信息", "Add","",new { @class="btn-info btn"})
+</p>
+<table class="table">
+    <tr>
+        <th>
+            编号
+        </th>
+        <th>
+            姓名
+        </th>
+        <th>
+            班级
+        </th>
+        <th>
+            违纪数量
+        </th>
+        <th>
+            更新时间
+        </th>
+        <th>
+            操作
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Sid)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Sname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.class1.Cname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Swei)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Stimes)
+        </td>
+        <td>
+            @Html.ActionLink("查看详情", "Xiang", new { id = item.Sid }, new { @class = "btn-info btn" }) |
+            @Html.ActionLink("添加一条", "Upt", new {  id=item.Sid },new { @class="btn-danger btn"}) |
+        </td>
+    </tr>
+}
+
+</table>
